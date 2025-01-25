@@ -1,15 +1,23 @@
-package api
+package handler
 
 import (
-    "net/http"
-    "github.com/gin-gonic/gin"
-    "github.com/yqty/one-api/router"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
-var Handler http.Handler
+// Handler is the entry point for Vercel
+func Handler(w http.ResponseWriter, r *http.Request) {
+	gin.SetMode(gin.ReleaseMode)
+	router := gin.Default()
 
-func init() {
-    gin.SetMode(gin.ReleaseMode)
-    r := router.SetupRouter()
-    Handler = r
+	// API 路由
+	router.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "One API is running",
+			"version": "1.0.0",
+		})
+	})
+
+	router.ServeHTTP(w, r)
 }
