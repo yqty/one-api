@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/go.mod",
+      "src": "api/main.go",
       "use": "@vercel/go"
     }
   ],
@@ -13,8 +13,9 @@
     }
   ],
   "env": {
+    "GIN_MODE": "release",
     "SQL_DSN": "your-database-connection-string",
     "REDIS_CONN_STRING": "your-redis-connection-string",
     "SESSION_SECRET": "your-session-secret"
   }
-}
+} 
