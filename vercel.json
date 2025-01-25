@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/main.go",
+      "src": "api/index.go",
       "use": "@vercel/go"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/api/main"
+      "dest": "/api"
     }
   ],
   "env": {
@@ -18,4 +18,4 @@
     "REDIS_CONN_STRING": "your-redis-connection-string",
     "SESSION_SECRET": "your-session-secret"
   }
-} 
+}
